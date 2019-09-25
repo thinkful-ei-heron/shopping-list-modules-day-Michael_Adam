@@ -9,4 +9,17 @@ const main = function () {
   const itemNames = [ '', 'apples', 'pears' ];
 };
 
+
 $(main);
+
+const test = function () {
+  store.addItem('bananas');
+  store.addItem('apples');
+  store.addItem('rice');
+  // grab the id of the first store item (bananas)
+  //let id = store.items[0].id;
+  // delete this item from the store
+  //store.findAndDelete(id);
+  shoppingList.render();
+}
+$(test);

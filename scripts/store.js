@@ -3,7 +3,47 @@ import item from './item.js';
 const items = [];
 let hideCheckedItems = false;
 
+const findById = function (id) {
+  return items.find(item => item.id === id);
+}
+
+const addItem = function (name) {
+  try {
+    item.validateName(name);
+    let createAddItem = item.create(name);
+    store.items.push(createAddItem);
+  }
+  catch(error) {
+    console.log(`Cannot add item: ${error.message}`);
+  }
+}
+
+const findAndToggleChecked = function (id) {
+  const item = findById(id);
+  item.checked = !item.checked;
+}
+
+const findAndUpdateName = function (id, newName) {
+  try {
+    item.validateName(id);
+    const update = findById(id);
+    update.name = newName;
+  }
+  catch(error) {
+    console.log(`Cannot update name: ${error.message}`);
+  }
+}
+
+const findAndDelete = function (id) {
+  items = items.filter(item => item.id !== id);
+}
+
 export default {
   items,
-  hideCheckedItems
+  hideCheckedItems,
+  findById,
+  addItem,
+  findAndToggleChecked,
+  findAndUpdateName,
+  findAndDelete
 };
