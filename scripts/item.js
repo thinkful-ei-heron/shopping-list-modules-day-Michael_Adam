@@ -10,7 +10,7 @@ const create = function (name) {
     id: cuid(),
     name,
     checked: false
-  }
+  };
 };
 
 export default {
